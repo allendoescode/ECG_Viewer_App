@@ -1,6 +1,5 @@
-# Project Title
+# ECG Viewer & Heart Rate Calculator
 
-ECG Viewer & Heart Rate Calculator
 
 A Streamlit application that visualizes ECG signals, detects R-peaks, and computes an estimated heart rate (BPM).
 
