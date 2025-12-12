@@ -52,7 +52,7 @@ The tool is educational only and is not intended for clinical diagnosis.
 
 You can capture a screenshot of this view (demo ECG selected, R-peaks shown, and BPM displayed) for documentation in your report.
 
-## Data Description (optional)
+## Data Description
 
 ### Data Source
 
