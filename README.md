@@ -1,84 +1,83 @@
-A simple Streamlit app that visualizes ECG data, detects R-peaks, and calculates estimated heart rate (BPM).
+# Project Title
 
-Biomedical Context
+ECG Viewer & Heart Rate Calculator
 
-This application is designed for biomedical engineering students learning the fundamentals of ECG signal processing.
-It provides an interactive way to explore ECG waveforms, detect R-peaks, and compute cardiac metrics without requiring advanced software or hardware.
-The tool is educational, lightweight, and ideal for demonstrating core concepts like sampling rate, threshold detection, and heart-rate estimation.
+A Streamlit application that visualizes ECG signals, detects R-peaks, and computes an estimated heart rate (BPM).
 
-Quick Start Instructions
-Opening the Repository in GitHub Codespaces
+## Biomedical Context
 
-Go to the repository link:
-https://github.com/allendoescode/ECG_Viewer_App
+This app is intended for biomedical engineering students and learners who are studying ECG signal processing.  
+It provides an interactive way to explore ECG waveforms, understand how R-peaks are detected, and see how heart rate is calculated from the R–R intervals.  
+The tool is educational only and is not intended for clinical diagnosis.
 
-Click the green Code button.
+## Quick Start Instructions
 
-Select "Open with Codespaces" → New Codespace.
+### Opening the Repository in GitHub Codespaces
 
-Wait for the environment to load.
+1. Go to the repository:  
+   https://github.com/allendoescode/ECG_Viewer_App
+2. Click the green **Code** button.
+3. Select **“Open with Codespaces”** (or create a new Codespace on `main`).
+4. Wait for the Codespace to finish loading.
 
-Running the Application
+### Running the Application
 
-Activate the virtual environment:
+1. In the Codespaces terminal, activate the virtual environment:
 
-source .venv/bin/activate
+       source .venv/bin/activate
 
+2. Run the Streamlit app:
 
-Run the Streamlit app:
+       streamlit run app.py
 
-streamlit run app.py
+3. When Codespaces shows a notification that the app is running on port 8501, click **“Open in Browser”** to view the ECG Viewer.
 
+## Usage Guide
 
-A prompt will appear in Codespaces → click “Open in Browser.”
+- **Step 1: Select ECG Source**  
+  Use the sidebar on the left to choose between:
+  - **Demo ECG**: uses a synthetic ECG signal generated in the app.  
+  - **Upload CSV**: allows you to upload your own ECG data as a CSV file with `time` and `ecg` columns.
 
-This launches the interactive ECG viewer.
+- **Step 2: Adjust Parameters**  
+  Still in the sidebar, set:
+  - **Sampling Rate (Hz)** – the sampling frequency of the ECG signal.  
+  - **Minimum R–R Distance (ms)** – the minimum allowed distance between detected R-peaks.  
+  - **Demo Duration (seconds)** – length of the synthetic ECG when using the demo mode.
 
-Usage Guide
+- **Step 3: View Results**  
+  After selecting the source and parameters, the main panel shows:
+  - The **ECG Signal** plot.  
+  - Red markers indicating **detected R-peaks**.  
+  - A **Heart Rate Result** section displaying the estimated BPM.
 
-Step 1: Select ECG Source
-In the sidebar, choose either:
+You can capture a screenshot of this view (demo ECG selected, R-peaks shown, and BPM displayed) for documentation in your report.
 
-Demo ECG (synthetic data), or
+## Data Description (optional)
 
-Upload CSV with time and ecg columns.
+### Data Source
 
-Step 2: Adjust Parameters
-Modify sliders for:
+- **Demo ECG**  
+  The demo signal is generated programmatically using NumPy. It consists of Gaussian noise with simulated R-peaks added at regular intervals to mimic a simplified ECG.
 
-Sampling Rate (Hz)
+- **Uploaded ECG**  
+  Users can upload a CSV file with at least the following columns:
 
-Minimum R–R interval (ms)
+      time,ecg
 
-Demo Duration (if using synthetic ECG)
+  - `time` – time in seconds.  
+  - `ecg` – ECG amplitude at each time point.  
 
-Step 3: View the Results
-The app displays:
+If the required columns are missing, the app displays an error message instead of plotting.
 
-The ECG waveform
+## Project Structure
 
-Automatically detected R-peaks (red dots)
+A high-level view of the project files:
 
-Estimated heart rate (BPM)
+- `app.py` – main Streamlit application that loads data, detects R-peaks, plots the ECG, and calculates heart rate.  
+- `README.md` – this documentation file describing the project, usage, and structure.  
+- `.venv/` – virtual environment directory used in Codespaces (not tracked by Git).  
+- `.devcontainer/` – configuration files for the GitHub Codespaces development container.  
+- `.vscode/` – editor settings for Visual Studio Code / Codespaces.  
+- `.gitignore` – specifies files and folders that should not be tracked by Git (e.g., `.venv`, temporary files).
 
-Example Output:
-(Insert your screenshot here)
-
-Data Description (optional)
-Data Source
-
-Demo ECG: Generated programmatically using NumPy with simulated R-peaks and added noise.
-
-Uploaded ECG: User-provided CSV file with two required columns:
-
-time,ecg
-
-Project Structure
-ECG_Viewer_App/
-│
-├── app.py                # Main Streamlit application
-├── README.md             # Documentation
-├── .venv/                # Virtual environment
-├── .devcontainer/        # Codespaces config
-├── .vscode/              # Editor settings
-└── .gitignore            # Files ignored by Git
